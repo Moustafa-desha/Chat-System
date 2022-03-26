@@ -35,5 +35,7 @@ class DatabaseSeeder extends Seeder
             'uuid'   => str::uuid(),
             'user_id'   =>rand(1,5),
         ]);
+
+
     }
 }

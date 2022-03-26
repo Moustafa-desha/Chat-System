@@ -10,7 +10,12 @@ class Message extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'body',
+        'attachment',
+        'user_id',
+        'conversation_id',
+    ];
 
     /***** check if sender show special div  ******/
     public function isOwn()

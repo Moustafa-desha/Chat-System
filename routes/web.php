@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Conversatins\ConversationController;
+
+use App\Http\Controllers\Conversations\ConversationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +22,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('conversations', [ConversationController::class, 'index'])->name('conv.index');
+
+Route::group(['middleware' => ['auth']] , function (){
+    Route::get('conversations', [ConversationController::class, 'index'])->name('conv.index');
+    Route::get('conversations/{conversation}', [ConversationController::class, 'show'])->name('conversation.show');
+    Route::get('conversations/create', [ConversationController::class, 'create'])->name('conv.create');
+
+});
